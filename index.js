@@ -5,10 +5,14 @@ const cors = require('cors')
 
 dotenv.config();
 const app = express();
-app.use(cors({
-  orgin: '*',
- 
-}))
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Listening on port ${8000}!`));

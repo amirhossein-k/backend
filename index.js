@@ -11,9 +11,10 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
+  res.setHeader("Access-Control-Allow-Origin", "*");
   next();
 });
-res.setHeader("Access-Control-Allow-Origin", "*");
+
 
 
 const PORT = process.env.PORT || 8000;

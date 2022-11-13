@@ -5,6 +5,9 @@ const cors = require('cors')
 
 dotenv.config();
 const app = express();
+
+app.use(urlencoded({ extended: true })); 
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "https://frontend-site1-6jqiqwso7-amirhossein-k.vercel.app");
   res.header(

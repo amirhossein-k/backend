@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const ConnetDb = require("./Config/db");
+const mongoose = require("mongoose");
 
 dotenv.config();
 const app = express();
@@ -15,4 +17,5 @@ const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, () => console.log(`Listening on port ${9000}!`));
 
+ConnetDb();
 app.get("/api/test", (req, res) => res.send({ message: "Hello" }));

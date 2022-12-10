@@ -3,6 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const ConnetDb = require("./Config/db");
 const mongoose = require("mongoose");
+const userRoutes = require("./routes/userRoutes");
 
 dotenv.config();
 const app = express();
@@ -19,3 +20,6 @@ app.listen(PORT, () => console.log(`Listening on port ${9000}!`));
 
 ConnetDb();
 app.get("/api/test", (req, res) => res.send({ message: "Hello" }));
+
+//Router
+app.use("/api/user", userRoutes);

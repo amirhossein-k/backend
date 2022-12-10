@@ -7,7 +7,7 @@
     "node": "17.x"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "dev": "nodemon index.js"
   },
   "repository": {

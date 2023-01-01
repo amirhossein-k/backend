@@ -22,6 +22,18 @@ const productSchema = {
     type: String,
     required: true,
   },
+  price: {
+    type: String,
+    required: false,
+  },
+  status: {
+    type: String,
+    required: true,
+  },
+  date: {
+            type: Date,
+            default: Date.now
+      }
 };
 
 const Product = mongoose.model("product", productSchema);

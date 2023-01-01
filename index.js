@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const ConnetDb = require("./Config/db");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 dotenv.config();
 const app = express();
@@ -23,3 +24,4 @@ app.get("/api/test", (req, res) => res.send({ message: "Hello" }));
 
 //Router
 app.use("/api/user", userRoutes);
+app.use("/api/product", productRoutes);

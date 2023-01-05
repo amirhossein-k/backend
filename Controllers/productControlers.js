@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Product = require("../models/productModel");
-
+const uuid = require("uuid");
 const listProduct = asyncHandler(async (req, res) => {
   const product = await Product.find();
   if (product) {
@@ -26,7 +26,7 @@ const listProduct = asyncHandler(async (req, res) => {
 
 const createProduct = asyncHandler(async (req, res) => {
   const { pic, namecar, factory, distance, skills, price, status } = req.body;
-
+  const id = uuid.v4();
   const product = await Product.create({
     pic,
     namecar,
@@ -35,6 +35,7 @@ const createProduct = asyncHandler(async (req, res) => {
     distance,
     price,
     status,
+    id,
   });
   if (product) {
     res.status(201).json({
@@ -45,6 +46,7 @@ const createProduct = asyncHandler(async (req, res) => {
       distance: product.distance,
       price: product.price,
       status: product.status,
+      id: product.id,
     });
   } else {
     res.status(400);

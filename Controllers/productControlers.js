@@ -54,4 +54,19 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { createProduct, listProduct };
+const DeleteProduct = asyncHandler(async (req, res) => {
+  const porduct = await Product.find({ id: req.params.id });
+
+  // if (porduct.user.toString() !== req.user._id.toString()) {
+  //   res.status(401);
+  //   throw new Error("you cant perform this action");
+  // }
+  if (porduct) {
+    await porduct.remove();
+    res.json({ message: "Product Removed" });
+  } else {
+    res.status(404);
+    throw new Error("product not found");
+  }
+});
+module.exports = { createProduct, listProduct, DeleteProduct };
